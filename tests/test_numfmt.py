@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-License-Identifier: MIT
+
 from unittest import TestCase
 
 from rf_pymods.numfmt import numfmt

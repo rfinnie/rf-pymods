@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-License-Identifier: MIT
+
+
 def numfmt(
     num,
     fmt="{num.real:0.02f} {num.prefix}",
@@ -15,9 +19,9 @@ def numfmt(
     limit: Stop after a specified number of rollovers
     prefixes: List of (decimal, binary) prefix strings, ascending
     """
-
-    # SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
-    # SPDX-License-Identifier: MIT
+    # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
+    # SPDX-SnippetCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+    # SPDX-LicenseInfoInSnippet: MIT
 
     class NumberFormat(float):
         prefix = ""

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-License-Identifier: MIT
+
 import binascii
 import random
 import re
@@ -14,8 +17,9 @@ class croniter_hash(croniter.croniter):
     for "H"/"R" definitions.
     """
 
-    # SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
-    # SPDX-License-Identifier: MIT
+    # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
+    # SPDX-SnippetCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+    # SPDX-LicenseInfoInSnippet: MIT
 
     def __init__(self, expr_format, *args, **kwargs):
         if "hash_id" in kwargs:
