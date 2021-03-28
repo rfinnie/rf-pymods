@@ -4,6 +4,12 @@ from rf_pymods.numfmt import numfmt
 
 
 class TestNumfmt(TestCase):
+    def test_str(self):
+        self.assertEqual(str(numfmt(12345)), "12.35 k")
+
+    def test_repr(self):
+        self.assertEqual(repr(numfmt(12345)), "12.35 k")
+
     def test_format(self):
         self.assertEqual("{}".format(numfmt(12345)), "12.35 k")
 
