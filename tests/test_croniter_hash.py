@@ -138,6 +138,16 @@ class TestCroniterHash(TestCase):
             "H H H(3-5) * *", datetime(2020, 1, 5, 11, 10), timedelta(days=31)
         )
 
+    def test_hash_division(self):
+        """Test a hashed division definition"""
+        self._test_iter("H H/3 * * *", datetime(2020, 1, 1, 3, 10), timedelta(hours=3))
+
+    def test_hash_range_division(self):
+        """Test a hashed range + division definition"""
+        self._test_iter(
+            "H(30-59)/10 H * * *", datetime(2020, 1, 1, 11, 31), timedelta(minutes=10)
+        )
+
     def test_hash_id_bytes(self):
         """Test hash_id as a bytes object"""
         self._test_iter(
