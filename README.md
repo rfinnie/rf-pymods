@@ -105,6 +105,27 @@ count
 """22"""
 ```
 
+## safe_write
+
+(Try to) safely write files with minimum collision possibility, by writing to a temporary file and then moving into final place upon filehandle close.
+The filehandle object otherwise performs identically to a real `open()` filehandle.
+
+```python
+with safe_write("foo") as f:
+    print("Current filename open is: {}".format(f.name))
+    print("Upon close, {} will be moved to {}".format(f.name, f.original_name))
+    f.write("bar")
+
+"""Current filename open is: foo.tmp726c0df7-276e-4d51-b99b-2632855d7bef~"""
+"""Upon close, foo.tmp726c0df7-276e-4d51-b99b-2632855d7bef~ will be moved to foo"""
+"""3"""
+
+os.stat("foo")
+"""os.stat_result(st_mode=33204, st_ino=48500857, st_dev=64768, st_nlink=1,
+                  st_uid=1000, st_gid=1000, st_size=3, st_atime=1617931328,
+                  st_mtime=1617931328, st_ctime=1617931328)"""
+```
+
 ## License
 
 Copyright (c) 2020-2021 Ryan Finnie
