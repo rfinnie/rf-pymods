@@ -12,11 +12,11 @@ class TestCroniterHash(TestCase):
     hash_id = "hello"
 
     def _test_iter(
-        self, definition, expectations, delta, epoch=None, hash_id=None, next_type=None
+        self, definition, expectations, delta, epoch=None, hash_id=-1, next_type=None
     ):
         if epoch is None:
             epoch = self.epoch
-        if hash_id is None:
+        if hash_id == -1:
             hash_id = self.hash_id
         if next_type is None:
             next_type = datetime
@@ -55,23 +55,72 @@ class TestCroniterHash(TestCase):
         """Test manually-defined yearly"""
         self._test_iter("H H H H *", datetime(2020, 9, 1, 11, 10), timedelta(days=365))
 
+    def test_vixie_word_midnight(self):
+        """Test built-in @midnight (no hash)"""
+        self._test_iter(
+            "@midnight", datetime(2020, 1, 2, 0, 0), timedelta(days=1), hash_id=None
+        )
+
+    def test_vixie_word_hourly(self):
+        """Test built-in @hourly (no hash)"""
+        self._test_iter(
+            "@hourly", datetime(2020, 1, 1, 1, 0), timedelta(hours=1), hash_id=None
+        )
+
+    def test_vixie_word_daily(self):
+        """Test built-in @daily (no hash)"""
+        self._test_iter(
+            "@daily", datetime(2020, 1, 2, 0, 0), timedelta(days=1), hash_id=None
+        )
+
+    def test_vixie_word_weekly(self):
+        """Test built-in @weekly (no hash)"""
+        self._test_iter(
+            "@weekly",
+            datetime(2020, 1, 5, 0, 0),
+            timedelta(weeks=1),
+            hash_id=None,
+        )
+
+    def test_vixie_word_monthly(self):
+        """Test built-in @monthly (no hash)"""
+        self._test_iter(
+            "@monthly", datetime(2020, 2, 1, 0, 0), timedelta(days=29), hash_id=None
+        )
+
+    def test_vixie_word_yearly(self):
+        """Test built-in @yearly (no hash)"""
+        self._test_iter(
+            "@yearly", datetime(2021, 1, 1, 0, 0), timedelta(days=365), hash_id=None
+        )
+
+    def test_vixie_word_annually(self):
+        """Test built-in @annually (no hash)
+
+        @annually is the same as @yearly
+        """
+        obj_annually = croniter_hash("@annually", self.epoch, hash_id=None)
+        obj_yearly = croniter_hash("@yearly", self.epoch, hash_id=None)
+        self.assertEqual(obj_annually.get_next(datetime), obj_yearly.get_next(datetime))
+        self.assertEqual(obj_annually.get_next(datetime), obj_yearly.get_next(datetime))
+
     def test_hash_word_midnight(self):
-        """Test built-in @midnight
+        """Test built-in @midnight (hash)
 
         @midnight is actually up to 3 hours after midnight, not exactly midnight
         """
         self._test_iter("@midnight", datetime(2020, 1, 1, 2, 10, 32), timedelta(days=1))
 
     def test_hash_word_hourly(self):
-        """Test built-in @hourly"""
+        """Test built-in @hourly (hash)"""
         self._test_iter("@hourly", datetime(2020, 1, 1, 0, 10, 32), timedelta(hours=1))
 
     def test_hash_word_daily(self):
-        """Test built-in @daily"""
+        """Test built-in @daily (hash)"""
         self._test_iter("@daily", datetime(2020, 1, 1, 11, 10, 32), timedelta(days=1))
 
     def test_hash_word_weekly(self):
-        """Test built-in @weekly"""
+        """Test built-in @weekly (hash)"""
         # croniter 1.0.5 changes the defined weekly range from (0, 6)
         # to (0, 7), to match cron's behavior that Sunday is 0 or 7.
         # This changes our hash, so test for either.
@@ -82,19 +131,19 @@ class TestCroniterHash(TestCase):
         )
 
     def test_hash_word_monthly(self):
-        """Test built-in @monthly"""
+        """Test built-in @monthly (hash)"""
         self._test_iter(
             "@monthly", datetime(2020, 1, 1, 11, 10, 32), timedelta(days=31)
         )
 
     def test_hash_word_yearly(self):
-        """Test built-in @yearly"""
+        """Test built-in @yearly (hash)"""
         self._test_iter(
             "@yearly", datetime(2020, 9, 1, 11, 10, 32), timedelta(days=365)
         )
 
     def test_hash_word_annually(self):
-        """Test built-in @annually
+        """Test built-in @annually (hash)
 
         @annually is the same as @yearly
         """
@@ -163,7 +212,7 @@ class TestCroniterHash(TestCase):
 
     def test_random(self):
         """Test random definition"""
-        obj = croniter_hash("R R * * *", self.epoch, hash_id=self.hash_id)
+        obj = croniter_hash("R R * * *", self.epoch)
         result_1 = obj.get_next(datetime)
         self.assertGreaterEqual(result_1, datetime(2020, 1, 1, 0, 0))
         self.assertLessEqual(result_1, datetime(2020, 1, 1, 0, 0) + timedelta(days=1))
@@ -173,7 +222,7 @@ class TestCroniterHash(TestCase):
 
     def test_random_range(self):
         """Test random definition within a range"""
-        obj = croniter_hash("R R R(10-20) * *", self.epoch, hash_id=self.hash_id)
+        obj = croniter_hash("R R R(10-20) * *", self.epoch)
         result_1 = obj.get_next(datetime)
         self.assertGreaterEqual(result_1, datetime(2020, 1, 10, 0, 0))
         self.assertLessEqual(result_1, datetime(2020, 1, 10, 0, 0) + timedelta(days=11))
@@ -183,7 +232,7 @@ class TestCroniterHash(TestCase):
 
     def test_random_float(self):
         """Test random definition, float result"""
-        obj = croniter_hash("R R * * *", self.epoch, hash_id=self.hash_id)
+        obj = croniter_hash("R R * * *", self.epoch)
         result_1 = obj.get_next(float)
         self.assertGreaterEqual(result_1, 1577836800.0)
         self.assertLessEqual(result_1, 1577836800.0 + (60 * 60 * 24))
@@ -199,6 +248,11 @@ class TestCroniterHash(TestCase):
         """Test an invalid defition raises CroniterNotAlphaError"""
         with self.assertRaises(croniter.CroniterNotAlphaError):
             croniter_hash("X X * * *", self.epoch, hash_id=self.hash_id)
+
+    def test_invalid_no_hash(self):
+        """Test a definition with "H" but no hash_id raises CroniterBadCronError"""
+        with self.assertRaises(croniter.CroniterBadCronError):
+            croniter_hash("H H * * *", self.epoch, hash_id=None)
 
     def test_invalid_get_next_type(self):
         """Test an invalid get_next type raises TypeError"""
