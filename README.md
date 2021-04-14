@@ -54,6 +54,32 @@ croniter_hash("@daily", epoch, hash_id=hash_id).get_next(datetime)
 """datetime.datetime(2020, 1, 1, 11, 10, 32)"""
 ```
 
+## ewma
+
+An [exponentially-weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average), with a default weight of 8.0.
+
+```python
+a = EWMA([1, 2])
+a.average
+"""1.125"""
+a.items
+"""2"""
+
+a.append(3)
+float(a)
+"""1.359375"""
+len(a)
+"""3"""
+
+a = EWMA((random() for _ in range(1000000)))
+a.average
+"""0.5001567190631783"""
+a.items
+"""1000000"""
+a.sum
+"""499919.5894089916"""
+```
+
 ## numfmt
 
 Formats numbers into human-pleasing representation.
