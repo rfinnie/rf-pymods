@@ -3,6 +3,20 @@
 This is a collection of small pieces of Python code which are useful in other projects.
 While you could technically import this package and use it directly, it's mostly encouraged to take the needed functionality and embed them directly in the needed project
 
+## auto_pager
+
+Automatically send output to a pager if being run through a TTY and the output is long enough, similar to `git log`, recent `dpkg -l`, etc.
+
+```python
+with AutoPager() as pager:
+    for i in range(1000):
+        print(i, file=pager)
+```
+
+Note that if the text sent to AutoPager is less than a screen length, it is still technically sent to a pager (`pager` by default, which itself is usually `less`), but since `--quit-if-one-screen` is passed to `less`, it will just output the text.
+
+If STDOUT is not a TTY, no pager will be invoked, and AutoPager will function like normal print().
+
 ## croniter_hash
 
 An extension to the [croniter](https://pypi.org/project/croniter/) module, primarily adding support for Jenkins-style "H" hashing definitions, as well as "R" random definitions.
