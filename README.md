@@ -166,6 +166,27 @@ os.stat("foo")
                   st_mtime=1617931328, st_ctime=1617931328)"""
 ```
 
+## smwrand
+
+An implementation of the Super Mario World random number generator, based on [deconstruction by Retro Game Mechanics Explained](https://www.youtube.com/watch?v=q15yNrJHOak).
+This is obviously not a cryptographically secure random number generator, as it has a fixed initial seed and only has a unique cycle of 27776 runs.
+
+```python
+smwrand = SMWRand()
+for i in range(5):
+    r = smwrand.rand()
+    print("Seed (post-output): 0x{:02x} 0x{:02x}, output: 0x{:02x} 0x{:02x}".format(
+        smwrand.seed_1, smwrand.seed_2, r[0], r[1],
+    ))
+"""
+Seed (post-output): 0x06 0x03, output: 0x05 0x00
+Seed (post-output): 0x9c 0x0f, output: 0x93 0x18
+Seed (post-output): 0x42 0x3e, output: 0x7c 0x12
+Seed (post-output): 0x78 0xf8, output: 0x80 0x37
+Seed (post-output): 0xbe 0xe3, output: 0x5d 0xa8
+"""
+```
+
 ## License
 
 Copyright (c) 2020-2021 Ryan Finnie
