@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import os
+import shutil
 import uuid
 
 
@@ -17,10 +18,11 @@ def safe_write(file, **kwargs):
     filename guessing collisions and should raise FileExistsError if
     such a collision can occur.
 
-    Unlike tempfile functions, safe_write does not create user-level
-    "secure" permissions.  Any permissions set during the temporary file
-    are moved to the final file, and any permissions in the original
-    final file (if the file existed) are lost.
+    By default, if the file exists beforehand, file stats will attempt
+    to be copied to the temporary file upon open, which in turn will be
+    moved to the final file upon close.  Use preserve_stats=False to
+    disable this behavior.  You may also change stats while the
+    filehandle is open and they will be preserved upon close:
 
         with safe_write("foo") as f:
             os.fchmod(f.fileno(), 0o0600)
@@ -36,10 +38,16 @@ def safe_write(file, **kwargs):
         fh._fh_close()
         os.rename(fh.name, fh.original_name)
 
+    preserve_stats = True
+    if "preserve_stats" in kwargs:
+        preserve_stats = bool(kwargs["preserve_stats"])
+        del kwargs["preserve_stats"]
     if "mode" not in kwargs:
         kwargs["mode"] = "x"
     temp_name = "{}.tmp{}~".format(file, str(uuid.uuid4()))
     fh = open(temp_name, **kwargs)
+    if preserve_stats and os.path.exists(file):
+        shutil.copystat(file, temp_name)
     setattr(fh, "original_name", file)
     setattr(fh, "_fh_close", fh.close)
     setattr(fh, "close", lambda: _sw_close(fh))

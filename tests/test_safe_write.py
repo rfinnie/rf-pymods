@@ -37,3 +37,21 @@ class TestSafeWrite(unittest.TestCase):
             f.closed = True
             f.close()
         m_r.assert_not_called()
+
+    @mock.patch("rf_pymods.safe_write.os.rename")
+    @mock.patch("rf_pymods.safe_write.os.path.exists", return_value=True)
+    @mock.patch("rf_pymods.safe_write.shutil.copystat")
+    def test_preserve_stats(self, m_copystat, m_exists, m_rename):
+        with mock.patch("rf_pymods.safe_write.open", mock.mock_open()):
+            with safe_write("foo", preserve_stats=True):
+                pass
+        m_copystat.assert_called_once()
+
+    @mock.patch("rf_pymods.safe_write.os.rename")
+    @mock.patch("rf_pymods.safe_write.os.path.exists", return_value=True)
+    @mock.patch("rf_pymods.safe_write.shutil.copystat")
+    def test_no_preserve_stats(self, m_copystat, m_exists, m_rename):
+        with mock.patch("rf_pymods.safe_write.open", mock.mock_open()):
+            with safe_write("foo", preserve_stats=False):
+                pass
+        m_copystat.assert_not_called()
