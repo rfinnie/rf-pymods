@@ -153,7 +153,7 @@ The filehandle object otherwise performs identically to a real `open()` filehand
 ```python
 with safe_write("foo") as f:
     print("Current filename open is: {}".format(f.name))
-    print("Upon close, {} will be moved to {}".format(f.name, f.original_name))
+    print("Upon close, {} will be moved to {}".format(f.name, f.dest_name))
     f.write("bar")
 
 """Current filename open is: foo.tmp726c0df7-276e-4d51-b99b-2632855d7bef~"""

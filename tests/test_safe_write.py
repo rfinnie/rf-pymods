@@ -21,7 +21,7 @@ class TestSafeWrite(unittest.TestCase):
         f.close()
         mocks["open"].assert_called_once()
         mocks["open"]().write.assert_called_once_with("testdata")
-        self.assertEqual(f.original_name, "testfile")
+        self.assertEqual(f.dest_name, "testfile")
 
     @decorated_mocks
     def test_close(self, mocks):

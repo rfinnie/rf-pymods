@@ -36,7 +36,7 @@ def safe_write(file, **kwargs):
         if fh.closed:
             return
         fh._fh_close()
-        os.rename(fh.name, fh.original_name)
+        os.rename(fh.name, fh.dest_name)
 
     preserve_stats = True
     if "preserve_stats" in kwargs:
@@ -48,7 +48,7 @@ def safe_write(file, **kwargs):
     fh = open(temp_name, **kwargs)
     if preserve_stats and os.path.exists(file):
         shutil.copystat(file, temp_name)
-    setattr(fh, "original_name", file)
+    setattr(fh, "dest_name", file)
     setattr(fh, "_fh_close", fh.close)
     setattr(fh, "close", lambda: _sw_close(fh))
     return fh
