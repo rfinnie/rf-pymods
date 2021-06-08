@@ -37,6 +37,7 @@ def safe_write(file, **kwargs):
             return
         fh._fh_close()
         os.rename(fh.name, fh.dest_name)
+        setattr(fh, "name", fh.dest_name)
 
     preserve_stats = True
     if "preserve_stats" in kwargs:

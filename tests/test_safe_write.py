@@ -28,6 +28,7 @@ class TestSafeWrite(unittest.TestCase):
         f = safe_write("foo")
         f.closed = False
         f.close()
+        self.assertEqual(f.name, f.dest_name)
         mocks["rename"].assert_called_once()
 
     @decorated_mocks
