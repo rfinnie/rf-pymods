@@ -145,6 +145,15 @@ count
 """22"""
 ```
 
+## runtime_lock
+
+Lock a process to prevent concurrent runtimes.
+
+```python
+with runtime_lock():
+    pass
+```
+
 ## safe_write
 
 (Try to) safely write files with minimum collision possibility, by writing to a temporary file and then moving into final place upon filehandle close.
