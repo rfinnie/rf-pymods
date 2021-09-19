@@ -187,6 +187,19 @@ Seed (post-output): 0xbe 0xe3, output: 0x5d 0xa8
 """
 ```
 
+## werder
+
+Werder creates word-like werds; words which are (usually) pronounceable but are otherwise randomly assembled.
+Useful as a replacement for places where a word list is used in human-readable identifiers (though werder is certainly capable of generating offensive words).
+
+```python
+werder = Werder()
+werder.werd()
+"""koowio"""
+werder.sentence()
+"""Lols blusifuly plart obud quustest oathakoord?"""
+```
+
 ## License
 
 Copyright (c) 2020-2021 Ryan Finnie
