@@ -125,21 +125,22 @@ num = numfmt(12345); f"{num.real:0.04f} {num.prefix}B"
 
 ## readiter
 
-A block-based iterable wrapper around filehandle read(), allowing for an interating loop without needing to check for the filehandle end sentinel.
+A block-based iterable wrapper around filehandle read(), allowing for an iterating loop without needing to check for the filehandle end sentinel.
 
 ```python
-count = 0
+import hashlib
+
+sha = hashlib.sha256()
 with open("/bin/ls", "rb") as fh:
     for block in readiter(fh):
-        count += 1
+        sha.update(block)
 
-count
-"""139"""
+sha.hexdigest()
+"""1e39354a6e481dac48375bfebb126fd96aed4e23bab3c53ed6ecf1c5e4d5736d"""
 
-count = 0
 with open("/etc/shells", "r") as fh:
-    for block in readiter(fh, size=10):
-        count += 1
+    for count, block in enumerate(readiter(fh, size=10)):
+        pass
 
 count
 """22"""
