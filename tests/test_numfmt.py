@@ -67,3 +67,6 @@ class TestNumfmt(TestCase):
             "{num.real:0.02f} {num.prefix}B".format(num=numfmt(123000000000, limit=2)),
             "123000.00 MB",
         )
+
+    def test_negative(self):
+        self.assertEqual("{}".format(numfmt(-12345)), "-12.35 k")

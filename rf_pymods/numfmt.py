@@ -48,6 +48,8 @@ def numfmt(
     if limit <= 0 or limit > len(prefixes):
         limit = len(prefixes)
 
+    is_negative = num < 0
+    num = abs(num)
     count = 0
     p = ""
     for prefix in prefixes:
@@ -58,7 +60,7 @@ def numfmt(
         count += 1
         num = num / float(divisor)
         p = prefix[1] if binary else prefix[0]
-    ret = NumberFormat(num)
+    ret = NumberFormat((0 - num) if is_negative else num)
     ret.fmt = fmt
     ret.prefix = p
     return ret
