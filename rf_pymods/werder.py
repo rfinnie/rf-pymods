@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2018-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 #
 # A 2021 rewrite of a 2018 Python port of a 2008 PHP port of a 1998 C
@@ -29,17 +32,13 @@ class Werder:
     """Generate random (but pronounceable) werds"""
 
     # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: Copyright (C) 2018-2021 Ryan Finnie
+    # SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
     parts_vowel = "a a ai e e ea ee i i ie io o o oa oi oo ou u u".split(" ")
     parts_begin = "b bl cl cr dr fl fr gr k l m pl qu sl sn spl squ tr wr".split(" ")
-    parts_end = (
-        "ch ck d ff gh ght ll ls ly m mn nct nd ng nt ny rd rt sk st t w zz".split(" ")
-    )
-    parts_rest = (
-        "b c cr ct d f g h k l m n nk p ph r s sh sn sp st str t th v w x z".split(" ")
-    )
+    parts_end = "ch ck d ff gh ght ll ls ly m mn nct nd ng nt ny rd rt sk st t w zz".split(" ")
+    parts_rest = "b c cr ct d f g h k l m n nk p ph r s sh sn sp st str t th v w x z".split(" ")
     werds_min = 5
     werds_max = 9
     syllables_min = 3
@@ -79,9 +78,7 @@ class Werder:
         if werds == -1:
             werds = random.randint(self.werds_min, self.werds_max)
 
-        return " ".join(
-            [self.werd() for _ in range(werds)]
-        ).capitalize() + random.choice(["!", ".", "?"])
+        return " ".join([self.werd() for _ in range(werds)]).capitalize() + random.choice(["!", ".", "?"])
 
 
 def main():

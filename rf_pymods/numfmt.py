@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 
@@ -20,7 +23,7 @@ def numfmt(
     prefixes: List of (decimal, binary) prefix strings, ascending
     """
     # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+    # SPDX-SnippetCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
     class NumberFormat(float):

@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 
@@ -10,7 +13,7 @@ class EWMA:
     """
 
     # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: Copyright (C) 2021 Ryan Finnie
+    # SPDX-SnippetCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
     _state = 0.0

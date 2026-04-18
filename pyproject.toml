@@ -1,0 +1,39 @@
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
+
+[project]
+name = "rf-pymods"
+authors = [
+    {name = "Ryan Finnie", email = "ryan@finnie.org"},
+]
+description = "A collection of small Python modules"
+readme = "README.md"
+requires-python = ">=3.4"
+license = "MIT"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/rfinnie/rf-pymods"
+
+[tool.setuptools.packages.find]
+include = [
+    "rf_pymods",
+    "rf_pymods.tests",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "rf_pymods.__version__"}
+
+[tool.black]
+line-length = 132

@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 import io
@@ -26,9 +29,7 @@ class TestReaditer(unittest.TestCase):
 
     def test_size(self):
         fh = io.StringIO(("?" * 10) + ("!" * 15))
-        self.assertEqual(
-            [x for x in readiter(fh, size=10)], ["?" * 10, "!" * 10, "!" * 5]
-        )
+        self.assertEqual([x for x in readiter(fh, size=10)], ["?" * 10, "!" * 10, "!" * 5])
 
     def test_bytes(self):
         fh = io.BytesIO(bytes(1024))

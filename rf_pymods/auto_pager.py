@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2018-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 import sys
@@ -9,7 +12,7 @@ import subprocess
 
 class AutoPager:
     # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+    # SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
     def __enter__(self):

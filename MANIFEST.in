@@ -1,5 +1,0 @@
-include Makefile
-include MANIFEST.in
-include README.md
-include tests/*.py
-include tox.ini

@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 import unittest
@@ -97,9 +100,7 @@ class TestAutoPager(unittest.TestCase):
         """Test KeyboardInterrupt during close() is ignored"""
         mocks["isatty"].return_value = True
         with AutoPager() as pager:
-            pager.pager.wait = mock.MagicMock(
-                side_effect=[None, KeyboardInterrupt, None, 127]
-            )
+            pager.pager.wait = mock.MagicMock(side_effect=[None, KeyboardInterrupt, None, 127])
             print("foo", file=pager)
         self.assertEqual(pager.closed, True)
         self.assertEqual(pager.pager.wait.call_count, 4)

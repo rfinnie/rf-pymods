@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 from unittest import TestCase
@@ -35,8 +38,8 @@ class TestWerder(TestCase):
 
     def test__init(self):
         """Testable __main__"""
-        with patch.object(werder, "main", return_value=0), patch.object(
-            werder, "__name__", "__main__"
-        ), patch.object(werder.sys, "exit") as mock_exit:
+        with patch.object(werder, "main", return_value=0), patch.object(werder, "__name__", "__main__"), patch.object(
+            werder.sys, "exit"
+        ) as mock_exit:
             werder._init()
         self.assertEqual(mock_exit.call_args[0][0], 0)

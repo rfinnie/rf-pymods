@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 import hashlib
@@ -43,6 +46,5 @@ class TestSMWRand(TestCase):
             a.extend(smwrand.rand())
         self.assertEqual(
             hashlib.sha256(a).digest(),
-            b"\x16+\x05\xb3\xb5f!\xa5\xd5k\xe9Xy\x03\x8d\xffy\xf7l"
-            b"\xc6\xef\xc6\x1f\x1e\x85\xd7\xfe\xd7\xbe?\xf3\x0e",
+            b"\x16+\x05\xb3\xb5f!\xa5\xd5k\xe9Xy\x03\x8d\xffy\xf7l" b"\xc6\xef\xc6\x1f\x1e\x85\xd7\xfe\xd7\xbe?\xf3\x0e",
         )

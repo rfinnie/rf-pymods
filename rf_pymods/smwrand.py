@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2019-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2019 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 
@@ -10,7 +13,7 @@ class SMWRand:
     """
 
     # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: Copyright (C) 2019-2021 Ryan Finnie
+    # SPDX-SnippetCopyrightText: © 2019 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
     seed_1 = 0
@@ -24,9 +27,7 @@ class SMWRand:
 
     def _rand(self):
         self.seed_1 = (self.seed_1 + (self.seed_1 << 2) + 1) & 0xFF
-        self.seed_2 = (
-            (self.seed_2 << 1) + int((self.seed_2 & 0x90) in (0x90, 0))
-        ) & 0xFF
+        self.seed_2 = ((self.seed_2 << 1) + int((self.seed_2 & 0x90) in (0x90, 0))) & 0xFF
         return self.seed_1 ^ self.seed_2
 
     def rand(self):

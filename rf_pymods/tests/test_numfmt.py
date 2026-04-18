@@ -1,4 +1,7 @@
-# SPDX-FileCopyrightText: Copyright (C) 2020-2021 Ryan Finnie
+# SPDX-PackageName: rf-pymods
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
 from unittest import TestCase
@@ -23,14 +26,10 @@ class TestNumfmt(TestCase):
         )
 
     def test_positional_num(self):
-        self.assertEqual(
-            "{0.real:0.03f} {0.prefix}B".format(numfmt(12345)), "12.345 kB"
-        )
+        self.assertEqual("{0.real:0.03f} {0.prefix}B".format(numfmt(12345)), "12.345 kB")
 
     def test_positional_named(self):
-        self.assertEqual(
-            "{num.real:0.01f} {num.prefix}B/s".format(num=numfmt(12345)), "12.3 kB/s"
-        )
+        self.assertEqual("{num.real:0.01f} {num.prefix}B/s".format(num=numfmt(12345)), "12.3 kB/s")
 
     def test_fstring(self):
         num = numfmt(12345)
