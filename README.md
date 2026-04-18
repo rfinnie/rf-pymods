@@ -17,43 +17,6 @@ Note that if the text sent to AutoPager is less than a screen length, it is stil
 
 If STDOUT is not a TTY, no pager will be invoked, and AutoPager will function like normal print().
 
-## croniter_hash
-
-An extension to the [croniter](https://pypi.org/project/croniter/) module, primarily adding support for Jenkins-style "H" hashing definitions, as well as "R" random definitions.
-
-```python
-epoch = datetime(2020, 1, 1, 0, 0)
-hash_id = "hello"
-
-# Hashed daily
-croniter_hash("H H * * *", epoch, hash_id=hash_id).get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 11, 10)"""
-
-# Each hashed definition is consistent to its specified hash_id
-croniter_hash("H H * * *", epoch, hash_id="hello").get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 11, 10)"""
-croniter_hash("H H * * *", epoch, hash_id="hello").get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 11, 10)"""
-croniter_hash("H H * * *", epoch, hash_id="bonjour").get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 20, 52)"""
-
-# The hash_id can be binary
-croniter_hash("H H * * *", epoch, hash_id=b"\x01\x02\x03\x04").get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 14, 53)"""
-
-# Epoch output
-croniter_hash("H H * * *", epoch, hash_id=hash_id).get_next(float)
-"""1577877000.0"""
-
-# 6th-position second formation is supported
-croniter_hash("H H * * * H", epoch, hash_id=hash_id).get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 11, 10, 32)"""
-
-# Named "@" definitions work too, and assume hashing to the second
-croniter_hash("@daily", epoch, hash_id=hash_id).get_next(datetime)
-"""datetime.datetime(2020, 1, 1, 11, 10, 32)"""
-```
-
 ## ewma
 
 An [exponentially-weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average), with a default weight of 8.0.

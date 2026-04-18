@@ -9,5 +9,4 @@ setup(
     author="Ryan Finnie",
     author_email="ryan@finnie.org",
     packages=["rf_pymods"],
-    install_requires=["croniter"],
 )
