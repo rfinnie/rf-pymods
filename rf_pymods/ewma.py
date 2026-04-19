@@ -16,7 +16,7 @@ class EWMA:
     # SPDX-SnippetCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
-    _state = 0.0
+    average = 1.0
     weight = 8.0
     items = 0
     sum = 0
@@ -43,10 +43,7 @@ class EWMA:
         if isinstance(vals, (int, float, complex)):
             vals = [vals]
         for number in vals:
-            if self._state == 0.0:
-                self._state = number * self.weight
-            else:
-                self._state += number - (self._state / self.weight)
+            self.average = (1 / self.weight) * number + (1 - (1 / self.weight)) * self.average
             self.items += 1
             self.sum += number
 
@@ -55,8 +52,3 @@ class EWMA:
 
     def extend(self, vals):
         self.add(vals)
-
-    @property
-    def average(self):
-        """Weighted average of the current EWMA set"""
-        return self._state / self.weight
