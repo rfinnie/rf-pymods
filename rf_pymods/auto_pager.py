@@ -1,6 +1,6 @@
 # SPDX-PackageName: rf-pymods
 # SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
-# SPDX-PackageDownloadLocation: https://github.com/rfinnie/rf-pymods
+# SPDX-PackageDownloadLocation: https://codeberg.org/rfinnie/rf-pymods
 # SPDX-FileCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
@@ -11,7 +11,7 @@ import subprocess
 
 
 class AutoPager:
-    # SPDX-SnippetComment: Originally from https://github.com/rfinnie/rf-pymods
+    # SPDX-SnippetComment: Originally from https://codeberg.org/rfinnie/rf-pymods
     # SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
