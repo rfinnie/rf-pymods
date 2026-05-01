@@ -38,8 +38,10 @@ class TestWerder(TestCase):
 
     def test__init(self):
         """Testable __main__"""
-        with patch.object(werder, "main", return_value=0), patch.object(werder, "__name__", "__main__"), patch.object(
-            werder.sys, "exit"
-        ) as mock_exit:
+        with (
+            patch.object(werder, "main", return_value=0),
+            patch.object(werder, "__name__", "__main__"),
+            patch.object(werder.sys, "exit") as mock_exit,
+        ):
             werder._init()
         self.assertEqual(mock_exit.call_args[0][0], 0)
