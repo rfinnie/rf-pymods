@@ -1,6 +1,6 @@
 # SPDX-PackageName: rf-pymods
 # SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
-# SPDX-PackageDownloadLocation: https://codeberg.org/rfinnie/rf-pymods
+# SPDX-PackageDownloadLocation: https://forge.colobox.com/rfinnie/rf-pymods
 # SPDX-FileCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
@@ -12,7 +12,7 @@ class EWMA:
     weight: Moving average weight, default 8.0
     """
 
-    # SPDX-SnippetComment: Originally from https://codeberg.org/rfinnie/rf-pymods
+    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
     # SPDX-SnippetCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 

@@ -1,6 +1,6 @@
 # SPDX-PackageName: rf-pymods
 # SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
-# SPDX-PackageDownloadLocation: https://codeberg.org/rfinnie/rf-pymods
+# SPDX-PackageDownloadLocation: https://forge.colobox.com/rfinnie/rf-pymods
 # SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
 
@@ -31,7 +31,7 @@ def safe_write(file, **kwargs):
             os.fchmod(f.fileno(), 0o0600)
             os.fchown(f.fileno(), 1000, 1000)
     """
-    # SPDX-SnippetComment: Originally from https://codeberg.org/rfinnie/rf-pymods
+    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
     # SPDX-SnippetCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
     # SPDX-LicenseInfoInSnippet: MIT
 
