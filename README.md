@@ -86,6 +86,24 @@ num = numfmt(12345); f"{num.real:0.04f} {num.prefix}B"
 """123000.00 MB"""
 ```
 
+## ratelimit_sleep_time
+
+Takes a `requests.Response` object, and, if it contains rate limit headers (from e.g. GitHub), it determines how long to sleep for to respect the rate limit.
+
+```python
+import requests
+import time
+
+for username in ("alice", "bob", "mallory"):
+    response = requests.get(f"https://example.com/api/user/{username}")
+    response.raise_for_status()
+    time.sleep(ratelimit_sleep_time(response).total_seconds())
+```
+
+By default, a logarithmic acceleration factor is applied which prefers more frequent requests at the beginning of a window or if many requests are remaining in the bucket.
+This is most useful for infrequent batches of requests.
+To disable acceleration and use a linear distribution of requests over the lifetime of the window, pass `accel=0`.
+
 ## readiter
 
 A block-based iterable wrapper around filehandle read(), allowing for an iterating loop without needing to check for the filehandle end sentinel.

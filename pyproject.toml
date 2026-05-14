@@ -20,7 +20,10 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = []
+dependencies = [
+    "python-dateutil",
+    "requests",
+]
 dynamic = ["version"]
 
 [project.urls]
