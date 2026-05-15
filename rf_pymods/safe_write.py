@@ -11,6 +11,7 @@ import uuid
 
 # SPDX-SnippetBegin
 # SPDX-SnippetName: safe_write from rf-pymods
+# SPDX-SnippetComment: Revision 2026-05-14
 # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
 # SPDX-SnippetCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT

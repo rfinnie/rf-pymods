@@ -12,6 +12,7 @@ import subprocess
 
 # SPDX-SnippetBegin
 # SPDX-SnippetName: auto_pager from rf-pymods
+# SPDX-SnippetComment: Revision 2026-05-14
 # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
 # SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MIT
