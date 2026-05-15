@@ -5,16 +5,17 @@
 # SPDX-License-Identifier: MIT
 
 
+# SPDX-SnippetBegin
+# SPDX-SnippetName: ewma from rf-pymods
+# SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
+# SPDX-SnippetCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
 class EWMA:
     """Exponentially-weighted moving average
 
     vals: Number, or list of numbers to add
     weight: Moving average weight, default 8.0
     """
-
-    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: © 2021 Ryan Finnie <ryan@finnie.org>
-    # SPDX-LicenseInfoInSnippet: MIT
 
     average = 1.0
     weight = 8.0
@@ -52,3 +53,6 @@ class EWMA:
 
     def extend(self, vals):
         self.add(vals)
+
+
+# SPDX-SnippetEnd

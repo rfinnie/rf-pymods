@@ -5,16 +5,17 @@
 # SPDX-License-Identifier: MIT
 
 
+# SPDX-SnippetBegin
+# SPDX-SnippetName: smwrand from rf-pymods
+# SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
+# SPDX-SnippetCopyrightText: © 2019 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
 class SMWRand:
     """Super Mario World random number generator
 
     Based on deconstruction by Retro Game Mechanics Explained
     https://www.youtube.com/watch?v=q15yNrJHOak
     """
-
-    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: © 2019 Ryan Finnie <ryan@finnie.org>
-    # SPDX-LicenseInfoInSnippet: MIT
 
     seed_1 = 0
     seed_2 = 0
@@ -34,3 +35,6 @@ class SMWRand:
         output_2 = self._rand()
         output_1 = self._rand()
         return (output_1, output_2)
+
+
+# SPDX-SnippetEnd

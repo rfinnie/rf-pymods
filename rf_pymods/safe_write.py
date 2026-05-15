@@ -9,6 +9,11 @@ import shutil
 import uuid
 
 
+# SPDX-SnippetBegin
+# SPDX-SnippetName: safe_write from rf-pymods
+# SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
+# SPDX-SnippetCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
 def safe_write(file, **kwargs):
     """(Try to) safely write files with minimum collision possibility
 
@@ -31,9 +36,6 @@ def safe_write(file, **kwargs):
             os.fchmod(f.fileno(), 0o0600)
             os.fchown(f.fileno(), 1000, 1000)
     """
-    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
-    # SPDX-LicenseInfoInSnippet: MIT
 
     def _sw_close(fh):
         if fh.closed:
@@ -56,3 +58,6 @@ def safe_write(file, **kwargs):
     setattr(fh, "_fh_close", fh.close)
     setattr(fh, "close", lambda: _sw_close(fh))
     return fh
+
+
+# SPDX-SnippetEnd

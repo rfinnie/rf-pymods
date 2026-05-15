@@ -10,11 +10,12 @@ import shlex
 import subprocess
 
 
+# SPDX-SnippetBegin
+# SPDX-SnippetName: auto_pager from rf-pymods
+# SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
+# SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
 class AutoPager:
-    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: © 2018 Ryan Finnie <ryan@finnie.org>
-    # SPDX-LicenseInfoInSnippet: MIT
-
     def __enter__(self):
         return self
 
@@ -71,3 +72,6 @@ class AutoPager:
                     pass
 
         self.closed = True
+
+
+# SPDX-SnippetEnd

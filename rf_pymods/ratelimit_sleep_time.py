@@ -12,6 +12,11 @@ import dateutil.parser
 import requests
 
 
+# SPDX-SnippetBegin
+# SPDX-SnippetName: ratelimit_sleep_time from rf-pymods
+# SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
+# SPDX-SnippetCopyrightText: © 2026 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MIT
 def ratelimit_sleep_time(response: requests.Response, accel: float = 10.0, leniency: float = 1.0) -> datetime.timedelta:
     """Determine sleep time from a requests response with ratelimit headers
 
@@ -19,10 +24,6 @@ def ratelimit_sleep_time(response: requests.Response, accel: float = 10.0, lenie
     accel: Format string of default repr/str output
     leniency: Seconds to add if next request lands right on the reset
     """
-    # SPDX-SnippetComment: Originally from https://forge.colobox.com/rfinnie/rf-pymods
-    # SPDX-SnippetCopyrightText: © 2026 Ryan Finnie <ryan@finnie.org>
-    # SPDX-LicenseInfoInSnippet: MIT
-
     if not all([response.headers.get(x) for x in ["date", "x-ratelimit-limit", "x-ratelimit-remaining", "x-ratelimit-reset"]]):
         # If no ratelimit info is present, return an empty timedelta,
         # which can still be used for time.sleep(t.total_seconds()) (zero)
@@ -79,3 +80,6 @@ def ratelimit_sleep_time(response: requests.Response, accel: float = 10.0, lenie
         # Avoid lining up a future request exactly at (or greatly after) the reset time
         sleep_td = api_reset_td + leniency_td
     return sleep_td
+
+
+# SPDX-SnippetEnd
