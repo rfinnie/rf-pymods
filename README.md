@@ -1,5 +1,8 @@
 # rf-pymods
 
+[![Git forge repository](https://img.shields.io/badge/git-forge-orange?logo=forgejo)](https://forge.colobox.com/rfinnie/rf-pymods)
+[![CI pipeline status](https://woodpecker.colobox.com/api/badges/53/status.svg)](https://woodpecker.colobox.com/repos/53)
+
 This is a collection of small pieces of Python code which are useful in other projects.
 While you could technically import this package and use it directly, it's mostly encouraged to take the needed functionality and embed them directly in the needed project
 
